@@ -1,0 +1,381 @@
+body {
+	margin: 0px;
+}
+.envelope-back {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: block;
+	width: 24rem;
+	height: 14rem;
+	background-color: #F5E6DD;
+	background-image: -webkit-linear-gradient(235.5deg,
+                                            rgba(  0,   0,   0, 0.0) 0%,
+                                            rgba(  0,   0,   0, 0.0) 48%,
+                                            rgba(  0,   0,   0, 0.1) 49%,
+                                            rgba(225, 215, 205, 0.7) 50%,
+                                            rgba(225, 215, 205, 0.0) 52%,
+                                            rgba(225, 215, 205, 0.0) 100%),
+                    -webkit-linear-gradient(-235.5deg,
+                                            rgba(225, 215, 205, 0.0) 0%,
+                                            rgba(225, 215, 205, 0.0) 48%,
+                                            rgba(225, 215, 205, 0.7) 49%,
+                                            rgba(  0,   0,   0, 0.1) 50%,
+                                            rgba(  0,   0,   0, 0.0) 52%,
+                                            rgba(  0,   0,   0, 0.0) 100%),
+                    -webkit-linear-gradient(-235.5deg,
+                                            rgba(  0,   0,   0, 0.0) 0%,
+                                            rgba(  0,   0,   0, 0.0) 48%,
+                                            rgba(  0,   0,   0, 0.1) 49%,
+                                            rgba(225, 215, 205, 0.5) 50%,
+                                            rgba(225, 215, 205, 0.0) 52%,
+                                            rgba(225, 215, 205, 0.0) 100%),
+                    -webkit-linear-gradient(235.5deg,
+                                            rgba(225, 215, 205, 0.0) 0%,
+                                            rgba(225, 215, 205, 0.0) 48%,
+                                            rgba(225, 215, 205, 0.5) 49%,
+                                            rgba(  0,   0,   0, 0.1) 50%,
+                                            rgba(  0,   0,   0, 0.0) 52%,
+                                            rgba(  0,   0,   0, 0.0) 100%),
+                    -webkit-linear-gradient(left,
+                                            rgba(51, 41, 31, 0.4) 0%,
+                                            rgba(51, 41, 31, 0.3) 5%,
+                                            rgba(51, 41, 31, 0.2) 12%,
+                                            rgba(51, 41, 31, 0.0) 50%,
+                                            rgba(51, 41, 31, 0.2) 88%,
+                                            rgba(51, 41, 31, 0.3) 95%,
+                                            rgba(51, 41, 31, 0.4) 100%),
+                    -webkit-linear-gradient(top,
+                                            rgba(51, 41, 31, 0.20) 0%,
+                                            rgba(51, 41, 31, 0.00) 20%,
+                                            rgba(51, 41, 31, 0.00) 50%,
+                                            rgba(51, 41, 31, 0.20) 88%,
+                                            rgba(51, 41, 31, 0.30) 95%,
+                                            rgba(51, 41, 31, 0.50) 100%);
+    background-position: 105% 215%,
+                        -5% 215%,
+                       100% -80%,
+                         0% -80%,
+                       center,
+                       center,
+                       center;
+    background-size: 12rem 12rem,
+                   12rem 12rem,
+                   12rem 12rem,
+                   12rem 12rem,
+                   auto,
+                   auto,
+                   auto;
+	background-repeat: no-repeat,
+                     no-repeat,
+                     no-repeat,
+                     no-repeat,
+                     repeat,
+                     repeat,
+                     repeat;
+    box-shadow: 0  1px  0   rgba(255, 255, 255, 0.6) inset,
+				0  2px  0   rgba(255, 255, 255, 0.2) inset,
+				0 -3px  3px rgba(  0,   0,   0, 0.3) inset,
+				0  2px  3px rgba(  0,   0,   0, 0.4),
+				0  6px 12px rgba(  0,   0,   0, 0.2);
+	border-radius: 0.5rem;
+	text-decoration: none;
+}
+
+.envelope-front {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+  display: block;
+  width:   24rem;
+  height:  14rem;
+
+    background-image:
+                    -webkit-linear-gradient(left,
+                                            rgba(51, 41, 31, 0.4) 0%,
+                                            rgba(51, 41, 31, 0.3) 5%,
+                                            rgba(51, 41, 31, 0.2) 12%,
+                                            rgba(51, 41, 31, 0.0) 50%,
+                                            rgba(51, 41, 31, 0.2) 88%,
+                                            rgba(51, 41, 31, 0.3) 95%,
+                                            rgba(51, 41, 31, 0.4) 100%),
+                    -webkit-linear-gradient(top,
+                                            rgba(51, 41, 31, 0.20) 0%,
+                                            rgba(51, 41, 31, 0.00) 20%,
+                                            rgba(51, 41, 31, 0.00) 50%,
+                                            rgba(51, 41, 31, 0.20) 88%,
+                                            rgba(51, 41, 31, 0.30) 95%,
+                                            rgba(51, 41, 31, 0.50) 100%);
+    background-position:
+                       center,
+                       center;
+    background-size:
+                   auto,
+                   auto;
+  background-repeat:
+                     repeat,
+                     repeat;
+
+  background-color: #F5E6DD;
+
+  border-radius: 0.5rem;
+
+  text-decoration: none;
+}
+
+.seal {
+  display: block;
+  width:   4.4rem;
+  height:  4.4rem;
+
+  position: absolute;
+  left:     50%;
+  top:      49%;
+  margin:   -2.2rem 0 0 -2.2rem;
+  border-radius: 2.2rem 1.9rem 2.3rem 2.0rem;
+  background:   #00ACED;
+  color:        #00ACED;
+  border-color: #00ACED;
+
+  box-shadow: 0 -2px 4px rgba(  0,   0,   0, 0.2) inset,
+              0  3px 3px rgba(255, 255, 255, 0.6) inset,
+              0  1px 5px rgba(  0,   0,   0, 0.8);
+
+  text-align: center;
+  line-height: 4.2rem;
+  font-size:   2.2rem;
+
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.seal .embossed {
+      display: block;
+      width:   80%;
+      height:  80%;
+
+      position: absolute;
+      top:      10%;
+      left:     10%;
+      /* ... */
+      box-shadow: 0  -2px 2px rgba(205, 205, 205, 0.1) inset,
+                  0   3px 3px rgba( 30,  30,  30, 0.1) inset,
+                  0   1px 2px rgba( 30,  30,  30, 0.6) inset;
+
+      border-radius: 999rem;
+      background-image: -webkit-linear-gradient(top,
+                                                rgba( 51, 51, 51, 0.3) 0%,
+                                                rgba( 51, 51, 51, 0.2) 100%);
+    }
+    .seal:before, .seal:after {
+  display: block;
+  content: ' ';
+  position: absolute;
+
+  line-height: 0;
+  font-size:   0;
+
+  background: inherit;
+  overflow:   hidden;
+
+  box-shadow: 0 1px 3px rgba(  0,   0,   0, 0.8),
+              0 3px 3px rgba(205, 205, 205, 0.4) inset;
+}
+.seal:after {
+  width:   0.7rem;
+  height:  0.7rem;
+  top:      84%;
+  left:     94%;
+
+  border-radius: 1rem 0.9rem 0.95rem 0.8rem;
+}
+
+.seal:before {
+  width:   0.3rem;
+  height:  0.3rem;
+  top:      103%;
+  left:     85%;
+
+  border-radius: 1rem 0.9rem 0.95rem 0.8rem;
+}
+
+.stamp {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  height: 76px;
+  width: 64px;
+  display: block;
+  background-image: url(http://www.stamprugs.com/acatalog/penny_red_stamp_sm.png);
+  background-size: 64px 76px;
+}
+
+.envelope {
+	position: relative;
+	display: block;
+	font-family: 'Indie Flower';
+}
+.letter-from {
+	position: absolute;
+	top: 7px;
+	left: 15px;
+	font-size: 30px;
+}
+.letter-subject {
+	position: absolute;
+	top: 70px;
+	width: 100%;
+	display: block;
+	text-align: center;
+	font-size: 40px;
+}
+.envelope a {
+  color: #444 !important;
+}
+
+.envelope-container {
+  position: relative;
+  margin: 10px auto;
+  width: 400px;
+  height: 230px;
+  z-index: 1;
+  perspective: 1000;
+}
+.envelope {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 0.5s linear;
+}
+.envelope-container:hover .envelope {
+  transform: rotateY(180deg);
+}
+.envelope-front, .envelope-back {
+  position: absolute !important;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden !important;
+}
+.envelope-front {
+  display: block;
+  transform: rotateY(0deg);
+  box-sizing: border-box;
+}
+.envelope-back {
+  display: block;
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+}
+
+.envelope-container {
+  display: inline-block;
+}
+
+html {
+  height: 100%;
+}
+.mail-list {
+  background-color: #334;
+  display: inline-block;
+  overflow: scroll;
+  width: 430px;
+  height: 100%;
+}
+
+#viewArea {
+  display: inline-block;
+  height: 100%;
+  width: calc(100% - 430px);
+}
+#composeArea {
+  line-height: 36px;
+  overflow: scroll;
+  background-color: #fff; 
+background-image: 
+linear-gradient(90deg, transparent 80px, #abced4 80px, #abced4 82px, transparent 82px),
+linear-gradient(#eee .1em, transparent .1em);
+background-size: 100% 1.2em;
+  padding: 40px;
+  font-size: 30px;
+  margin: 0px;
+  border: 0px;
+  height: 100%;
+  width: 100%;
+  font-family: 'Indie Flower';
+}
+#composeArea:focus {
+  outline: none;
+}
+
+#header {
+  line-height: 60px;
+  text-align: center;
+  height: 60px;
+  /*background-image:-webkit-linear-gradient(-45deg, #5040ab 25%,#ffffff 25%,#ffffff 50%,#dc3433 50%,#dc3433 75%,#ffffff 75%,#ffffff 100%,#5040ab 100%);*/
+  /*background-image:-webkit-linear-gradient(-45deg, #5040ab 16%,#ffffff 16%, #ffffff 32%,#dc3433 32%, #dc3433 48%,#5040ab 48%, #5040ab 64%,#ffffff 64%, #ffffff 80%,#ffffff 80%, #ffffff 100%,#5040ab 100%);*/
+  background-color: #28517F;
+  background-size: 100px 100px;
+  background-repeat: repeat;
+  color: #FFF;
+  font-size: 40px;
+  font-family: 'Sancreek';
+}
+
+#content {
+  display: block;
+  height: calc(100% - 60px);
+}
+
+#letter-message {
+  width: 70%;
+  height: 100%;
+  box-shadow: 0px 0px 20px #000;
+  position: fixed;
+  top: 20px;
+}
+
+@font-face {
+  font-family: 'Indie Flower';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Indie Flower'), local('IndieFlower'), url(fonts/Indie_Flower/IndieFlower.ttf) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: 'Sancreek';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Sancreek Regular'), local('Sancreek-Regular'), url(fonts/Sancreek/Sancreek-Regular.ttf) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+.popup-container {
+  position: fixed;
+  top: 100px;
+  width: 100%;
+  left: 0px;
+}
+.popup {
+  padding: 20px;
+  background-color: #f5f5f5;
+  width: 300px;
+  margin: auto;
+  border: 2px solid #abced4;
+}
+
+body {
+  background-color: #f1e9d2;
+}
+
+input {
+  font-family: 'Indie Flower';
+  font-size: 20px;
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin: 5px 0px;
+}
+input[type="submit"] {
+  font-family: 'Sancreek';
+}
