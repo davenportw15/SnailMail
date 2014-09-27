@@ -1,0 +1,37 @@
+<html>
+<head>
+<script type="text/javascript" src="%% url_for('static', filename='js/angular.min.js') %%"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="md5.js"></script>
+<script type="text/javascript" src="controllers.js"></script>
+</head>
+<body ng-app="snailMail">
+
+<div id="header">SnailMail</div>
+
+<div id="content">
+
+<div class="popup-container">
+<div class="popup">
+<form action="post" method="/api/signup">
+*SnailMail requires access to your location in order to operate correctly.
+	<input type="text" name="username" placeholder="Username" />
+	<input type="password" name="password" placeholder="password" />
+	<input id="latin" name="lat" type="hidden" />
+	<input id="lonin" name="lon" type="hidden" />
+	<input type="submit" value="Sign Up!" />
+</form>
+</div>
+</div>
+
+</div>
+<script type="text/javascript">
+navigator.geolocation.getCurrentPosition(loadPos)
+
+function loadPos(position) {
+	document.getElemenById('lonin').value = position.coords.longitude;
+	document.getElemenById('latin').value = position.coords.latitude;
+}
+</script>
+</body>
+</html>

@@ -1,11 +1,24 @@
-from flask import Flask, jsonify, session, request, redirect, url_for
+from flask import Flask, jsonify, session, request, redirect, url_for, render_template
 import sqlite3
 import os
 
 from models.users import Users
 from models.mail import Mail
 
-app = Flask(__name__)
+class FlaskAngular(Flask):
+  jinja_options = Flask.jinja_options.copy()
+  jinja_options.update(dict(
+    block_start_string='<%',
+    block_end_string='%>',
+    variable_start_string='%%',
+    variable_end_string='%%',
+    comment_start_string='<#',
+    comment_end_string='#>',
+))
+
+
+app = FlaskAngular(__name__)
+app.config['DEBUG'] = True
 
 # SQLite3 connection
 db = sqlite3.connect(os.path.abspath("db.sqlite"))
@@ -14,24 +27,15 @@ db = sqlite3.connect(os.path.abspath("db.sqlite"))
 users = Users(db)
 mail = Mail(db, users)
 
-@app.route("/signup", methods=["GET", "POST"])
-def signup():
-  if request.method == "GET":
-    render_template() #RENDER SOME TEMPLATE
-  else: # If form posted
-    username = request.form.get("username")
-    password = request.form.get("password")
-    latitude = request.form.get("latitude")
-    longitude = request.form.get("longitude")
-    if username && password && latitude && longitude:
-      users.create_user(username, password, latitude, longitude)
-    else:
-      flash("Complete all fields")
-      redirect(url_for("signup"))
+@app.route("/test")
+def test():
+  return "Test"
 
+@app.route("/signup")
+def signup():
+  return render_template("signup.html")
 
 # API
-
 @app.route("/api/mail")
 def api_mail():
   pass
