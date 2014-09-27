@@ -8,6 +8,12 @@
 
 <div id="header">SnailMail</div>
 
+<div id="letter">
+	<div id="letter-from"></div>
+	<div id="letter-date"></div>
+	<div id="letter-message"></div>
+</div>
+
 <div id="content">
 
 <div class="mail-list" ng-controller="mailbox">
@@ -31,7 +37,7 @@
 	<input id="composeTo" placeholder="To" type="text">
 	<input id="composeSubject" placeholder="Subject" type="text">
 	<textarea id="composeArea"></textarea>
-	<button onclick="sendMail()">Send</button>
+	<button id="sendMail" onclick="sendMail()">Send</button>
 </div>
 
 </div>

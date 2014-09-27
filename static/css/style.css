@@ -298,7 +298,7 @@ background-size: 100% 1.2em;
   font-size: 30px;
   margin: 0px;
   border: 0px;
-  height: 100%;
+  height: calc(100% - 160px);
   width: 100%;
   font-family: 'Indie Flower';
 }
@@ -323,12 +323,28 @@ background-size: 100% 1.2em;
   height: calc(100% - 60px);
 }
 
-#letter-message {
+#letter {
+  display: none;
+  z-index: 99;
   width: 70%;
   height: 100%;
   box-shadow: 0px 0px 20px #000;
   position: fixed;
-  top: 20px;
+  height: 100%;
+  background-color: #f1e9d2;
+}
+#letter-message {
+  font-size: 23px;
+}
+#letter-from {
+  font-size: 20px;
+  text-align: left;
+  display: inline-block;
+}
+#letter-date {
+  font-size: 15px;
+  text-align: right;
+  display: inline-block;
 }
 
 @font-face {
@@ -404,4 +420,12 @@ input[type="submit"] {
     text-transform:uppercase;
     background:#ffecec;
     border:1px solid #f5aca6;
+}
+#sendMail {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+#viewMessage {
+
 }

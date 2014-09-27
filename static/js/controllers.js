@@ -8,14 +8,11 @@ mailbox.controller('mailbox', function ($scope) {
 });
 
 
-function openLetter(id) {
-	$http.get('/api/message/'+ id).
-        success(function(data) {
-            document.getElementById('letter-from').innerText = data[0].from;
-			document.getElementById('letter-date').innerText = data[0].date;
-			document.getElementById('letter-message').value = data[0].message;
-        });
-	}
+function openLetter(letter) {
+	document.getElementById('letter-from').innerText = letter.sender;
+	document.getElementById('letter-date').innerText = letter.date;
+	document.getElementById('letter-message').value = letter.message;     
+}
 
 function sendMail() {
 	data = {}
