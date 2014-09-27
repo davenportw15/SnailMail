@@ -1,9 +1,9 @@
 <html>
 <head>
 <script type="text/javascript" src="%% url_for('static', filename='js/angular.min.js') %%"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
-<script type="text/javascript" src="md5.js"></script>
-<script type="text/javascript" src="controllers.js"></script>
+<link rel="stylesheet" type="text/css" href="%% url_for('static', filename='css/style.css') %%">
+<script type="text/javascript" src="%% url_for('static', filename='js/md5.js') %%"></script>
+<script type="text/javascript" src="%% url_for('static', filename='js/controllers.js') %%"></script>
 </head>
 <body ng-app="snailMail">
 
@@ -16,7 +16,7 @@
 <form action="post" method="/api/signup">
 *SnailMail requires access to your location in order to operate correctly.
 	<input type="text" name="username" placeholder="Username" />
-	<input type="password" name="password" placeholder="password" />
+	<input type="password" name="password" placeholder="Password" />
 	<input id="latin" name="latitude" type="hidden" />
 	<input id="lonin" name="longitude" type="hidden" />
 	<input type="submit" value="Sign Up!" />

@@ -351,9 +351,26 @@ background-size: 100% 1.2em;
 
 .popup-container {
   position: fixed;
-  top: 100px;
+  top: 500px;
+  animation:popup 0.7s ease-out;
+  animation-fill-mode:forwards;
+  opacity: 0;
   width: 100%;
   left: 0px;
+}
+@keyframes popup {
+  0% {
+    opacity: 0;
+    top: 500px;
+  }
+  70% {
+    opacity: 1;
+    top: 70px;
+  }
+  100% {
+    opacity: 1;
+    top: 100px;
+  }
 }
 .popup {
   padding: 20px;
