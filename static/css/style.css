@@ -349,10 +349,10 @@ background-size: 100% 1.2em;
 
 .popup-container {
   position: fixed;
-  top: 500px;
-  -webkit-animation:popup 0.7s ease-out;
-  -webkit-animation-fill-mode:forwards;
-  opacity: 0;
+  top: 100px;
+  /*-webkit-animation:popup 0.7s ease-out;
+  -webkit-animation-fill-mode:forwards;*/
+  opacity: 1;
   width: 100%;
   left: 0px;
 }
