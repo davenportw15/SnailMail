@@ -14,6 +14,15 @@ class Users:
     )
     self.db.commit()
 
+  def user_exists(self, username, password):
+    cursor = self.db.cursor()
+    cursor.execute(
+      "select id from users where username == ? and password == ?",
+      (username, password))
+    data = cursor.fetchone()
+    print(data)
+    return not (data == None)
+
   def get_user(self, id):
     cursor = self.db.cursor()
     cursor.execute(

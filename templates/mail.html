@@ -13,7 +13,7 @@
 <div class="mail-list" ng-controller="mailbox">
 
 	<div ng-repeat="letter in letters" class="envelope-container">
-		<a ng-href="javascript:openLetter({{letter.id}}"c class="envelope">
+		<a ng-href="javascript:openLetter({{letter.id}}" class="envelope">
 			<div class="envelope-back">
 				<span class="seal">
 					<img ng-src="http://www.gravatar.com/avatar/{{letter.from}}?d=identicon" class="embossed seal-image" />
@@ -21,7 +21,7 @@
 			</div>
 			<div class="envelope-front">
 				<span class="stamp"></span>
-				<span class="letter-from">{{letter.from}}</span>
+				<span class="letter-from">{{letter.sender}}</span>
 				<span class="letter-subject">{{letter.subject}}</span>
 			</div>
 		</a>

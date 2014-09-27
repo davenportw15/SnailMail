@@ -1,9 +1,10 @@
 var mailbox = angular.module('snailMail', []);
 
-mailbox.controller('mailbox', function ($scope) {
+mailbox.controller('mailbox', function ($scope, $http) {
 	$http.get('/api/mail')
     .success(function(data) {
-      $scope.letters = data;
+      console.log(data.mail);
+      $scope.letters = data.mail;
     });
 });
 

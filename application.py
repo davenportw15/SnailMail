@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, session, request, redirect, url_for, render_template
+from flask import Flask, jsonify, session, request, redirect, url_for, render_template, flash
 import sqlite3
 import os
 
@@ -19,6 +19,7 @@ class FlaskAngular(Flask):
 
 app = FlaskAngular(__name__)
 app.config['DEBUG'] = True
+app.secret_key = "2jfj9pj9f$$$kldjflkj2kljfkj###23jlkjl@"
 
 # SQLite3 connection
 db = sqlite3.connect(os.path.abspath("db.sqlite"), check_same_thread=False)
@@ -27,9 +28,9 @@ db = sqlite3.connect(os.path.abspath("db.sqlite"), check_same_thread=False)
 users = Users(db)
 mail = Mail(db, users)
 
-@app.route("/test")
+@app.route("/whoami")
 def test():
-  return "Test"
+  return session.get("username")
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -41,21 +42,51 @@ def signup():
     longitude = request.form.get("longitude")
     latitude = request.form.get("latitude")
     if username and password and longitude and latitude:
-      print("{} {} {} {}".format(username, password, latitude, longitude))
       users.create_user(username, password, latitude, longitude)
-      return "User {} created".format(username)
+      session["username"] = username
+      return redirect(url_for("dashboard"))
     else:
       flash("Complete all fields")
       return redirect(url_for("signup"))
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+  if request.method == "GET":
+    return render_template("login.html")
+  else:
+    username = request.form.get("username")
+    password = request.form.get("password")
+    if username and password:
+      if users.user_exists(username, password):
+        session["username"] = username
+        return redirect("dashboard")
+      else:
+        flash("Username and password do not match an account")
+        return redirect(url_for("login"))
+    else:
+      flash("Complete all fields")
+      return redirect(url_for("login"))
+
+@app.route("/dashboard", methods=["GET"])
+def dashboard():
+  return render_template("mail.html")
+
 # API
 @app.route("/api/mail")
 def api_mail():
-  pass
+  if "username" in session:
+    return jsonify(mail=mail.get_mail_for_user(session.get("username")))
+  else:
+    return jsonify(mail=[])
 
-@app.route("/api/send")
+@app.route("/api/send", methods=["POST"])
 def api_send():
-  pass
+  sent_mail = request.json
+  if "content" in sent_mail and "date_sent" in sent_mail and "sender" in sent_mail and "recipient" in sent_mail and "subject" in sent_mail:
+    mail.create_mail(sent_mail["content"], sent_mail["date_sent"], sent_mail["sender"], sent_mail["recipient"], sent_mail["subject"])
+    return jsonify(status=True)
+  else:
+    return jsonify(status=False)
 
 @app.route("/user/<id>")
 def api_users(id):
