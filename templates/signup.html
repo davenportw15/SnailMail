@@ -1,8 +1,7 @@
 <html>
 <head>
-<script type="text/javascript" src="%% url_for('static', filename='js/angular.min.js') %%"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
 <link rel="stylesheet" type="text/css" href="%% url_for('static', filename='css/style.css') %%">
-<script type="text/javascript" src="%% url_for('static', filename='js/md5.js') %%"></script>
 <script type="text/javascript" src="%% url_for('static', filename='js/controllers.js') %%"></script>
 </head>
 <body ng-app="snailMail">
@@ -13,7 +12,7 @@
 
 <div class="popup-container">
 <div class="popup">
-<form action="post" method="/api/signup">
+<form method="POST" action="/signup">
 *SnailMail requires access to your location in order to operate correctly.
 	<input type="text" name="username" placeholder="Username" />
 	<input type="password" name="password" placeholder="Password" />
@@ -29,8 +28,8 @@
 navigator.geolocation.getCurrentPosition(loadPos)
 
 function loadPos(position) {
-	document.getElemenById('lonin').value = position.coords.longitude;
-	document.getElemenById('latin').value = position.coords.latitude;
+	document.getElementById('lonin').value = position.coords.longitude;
+	document.getElementById('latin').value = position.coords.latitude;
 }
 </script>
 </body>

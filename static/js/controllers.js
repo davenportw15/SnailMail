@@ -1,11 +1,10 @@
 var mailbox = angular.module('snailMail', []);
 
 mailbox.controller('mailbox', function ($scope) {
-	$http.get('/api/mail').
-        success(function(data) {
-            $scope.letters = data;
-        });
-	}
+	$http.get('/api/mail')
+    .success(function(data) {
+      $scope.letters = data;
+    });
 });
 
 
@@ -17,7 +16,6 @@ function openLetter(id) {
 			document.getElementById('letter-message').value = data[0].message;
         });
 	}
-}
 
 function sendMail() {
 	data = {}
@@ -29,4 +27,3 @@ function sendMail() {
             alert('the deed is done')
         });
 	}
-}
