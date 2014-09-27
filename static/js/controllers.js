@@ -14,10 +14,19 @@ function openLetter(id) {
         success(function(data) {
             document.getElementById('letter-from').innerText = data[0].from;
 			document.getElementById('letter-date').innerText = data[0].date;
-			document.getElementById('letter-message').innerText = data[0].message;
+			document.getElementById('letter-message').value = data[0].message;
         });
 	}
-	document.getElementById('letter-from').innerText = '';
-	document.getElementById('letter-date').innerText = '';
-	document.getElementById('letter-message').innerText = '';
+}
+
+function sendMail() {
+	data = {}
+	data.message = document.getElementById('letter-message').value;
+	data.to = document.getElementById('compose-to');
+	data.subject = document.getElementById('compose-subject');
+	$http.post('/api/send', data).
+        success(function(data) {
+            alert('the deed is done')
+        });
+	}
 }
