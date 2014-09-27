@@ -13,6 +13,13 @@
 <div class="popup-container">
 <div class="popup">
 <form method="POST" action="/signup">
+<% with messages = get_flashed_messages() %>
+  <% if messages %>
+   <% for message in messages %>
+    	<span class="error"> %% message %% </span>
+    <% endfor %>
+  <% endif %>
+<% endwith %>
 *SnailMail requires access to your location in order to operate correctly.
 	<input type="text" name="username" placeholder="Username" />
 	<input type="password" name="password" placeholder="Password" />
