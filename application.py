@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, session, request, redirect, url_for
 import sqlite3
 import os
 
@@ -13,6 +13,24 @@ db = sqlite3.connect(os.path.abspath("db.sqlite"))
 # Models
 users = Users(db)
 mail = Mail(db)
+
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
+  if request.method == "GET":
+    render_template() #RENDER SOME TEMPLATE
+  else: # If form posted
+    username = request.form.get("username")
+    password = request.form.get("password")
+    latitude = request.form.get("latitude")
+    longitude = request.form.get("longitude")
+    if username && password && latitude && longitude:
+      users.create_user(username, password, latitude, longitude)
+    else:
+      flash("Complete all fields")
+      redirect(url_for("signup"))
+
+
+# API
 
 @app.route("/api/mail")
 def api_mail():

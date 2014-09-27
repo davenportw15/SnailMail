@@ -4,8 +4,9 @@ class Mail:
 	
 	def __init__(self, db):
 		self.db = db
+		self.users = 
 
-	def create_mail(self, content, date_sent, deliver_date, sender, recipient, subject):
+	def create_mail(self, content, date_sent, sender, recipient, subject):
 		cursor = self.db.cursor()
 
 		cursor.execute("insert into mail (content, date_sent, sender, recipient, subject) values (?,?,?,?,?)",
