@@ -9,6 +9,7 @@
 <div id="header">SnailMail</div>
 
 <div id="letter">
+<button id="close" onclick="closeLetter()">Close</button>
 	<div id="letter-from"></div>
 	<div id="letter-date"></div>
 	<div id="letter-message"></div>
@@ -19,7 +20,7 @@
 <div class="mail-list" ng-controller="mailbox">
 
 	<div ng-repeat="letter in letters" class="envelope-container">
-		<a ng-href="javascript:openLetter({{letter}}"c class="envelope">
+		<a ng-href="javascript:openLetter({{letter}}" class="envelope">
 			<div class="envelope-back">
 				<span class="seal">
 					<img ng-src="http://www.gravatar.com/avatar/{{letter.from}}?d=identicon" class="embossed seal-image" />

@@ -325,6 +325,7 @@ background-size: 100% 1.2em;
 
 #letter {
   display: none;
+  margin: auto;
   z-index: 99;
   width: 70%;
   height: 100%;
@@ -428,4 +429,10 @@ input[type="submit"] {
 }
 #viewMessage {
 
+}
+
+#close {
+  position: absolute;
+  top: 3px;
+  right: 3px;
 }
