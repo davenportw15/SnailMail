@@ -1,16 +1,32 @@
 from datetime import datetime
+from distance import time
+from distance import dist
 
 class Mail:
 	
-	def __init__(self, db):
+	def __init__(self, db, users):
 		self.db = db
+		self.users = users
 
-	def create_mail(self, content, date_sent, deliver_date, sender, recipient, subject):
+	def create_mail(self, content, date_sent, sender, recipient, subject):
 		cursor = self.db.cursor()
+		u_cursor = self.users.cursor()
 
-		cursor.execute("insert into mail (content, date_sent, sender, recipient, subject) values (?,?,?,?,?)",
+		u_cursor.execute("select latitude, longitude where username==?", (sender,))
+		sender_coords = u_cursor.fetchall()
+		u_cursor.execute("select latitude, longitude where username==?", (recipient,))
+		recipient_coords = u_cursor.fetchall()
+
+		delay = time(dist(sender_coords[0],sender_coords[1],recipient_coords[0],recipient_coords[1]))
+
+		deliver_date= datetime.strptime(date_sent,"%Y-%m-%d") + datetime.timedelta(days=delay)
+
+
+
+		cursor.execute("insert into mail (content, date_sent, deliver_date, sender, recipient, subject) values (?,?,?,?,?)",
 				(content,
 				date_sent,
+				deliver_date,
 				sender,
 				recipient,
 				subject) )
