@@ -1,0 +1,28 @@
+<html>
+<head>
+<script type="text/javascript" src="%% url_for('static', filename='js/angular.min.js') %%"></script>
+<link rel="stylesheet" type="text/css" href="%% url_for('static', filename='css/style.css') %%">
+<script type="text/javascript" src="%% url_for('static', filename='js/md5.js') %%"></script>
+<script type="text/javascript" src="%% url_for('static', filename='js/controllers.js') %%"></script>
+</head>
+<body ng-app="snailMail">
+
+<div id="header">SnailMail</div>
+
+<div id="content">
+
+<div class="popup-container">
+<div class="popup">
+<form action="post" method="/api/login">
+	<input type="text" name="username" placeholder="Username" />
+	<input type="password" name="password" placeholder="Password" />
+	<input id="latin" name="lat" type="hidden" />
+	<input id="lonin" name="lon" type="hidden" />
+	<input type="submit" value="Log In" />
+</form>
+</div>
+</div>
+
+</div>
+</body>
+</html>

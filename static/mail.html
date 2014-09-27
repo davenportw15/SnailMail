@@ -1,9 +1,9 @@
 <html>
 <head>
-<script type="text/javascript" src="angular.min.js"></script>
-<link rel="stylesheet" type="text/css" href="style.css">
-<script type="text/javascript" src="md5.js"></script>
-<script type="text/javascript" src="controllers.js"></script>
+<script type="text/javascript" src="%% url_for('static', filename='js/angular.min.js') %%"></script>
+<link rel="stylesheet" type="text/css" href="%% url_for('static', filename='css/style.css') %%">
+<script type="text/javascript" src="%% url_for('static', filename='js/md5.js') %%"></script>
+<script type="text/javascript" src="%% url_for('static', filename='js/controllers.js') %%"></script>
 </head>
 <body ng-app="snailMail">
 
@@ -14,7 +14,7 @@
 <div class="mail-list" ng-controller="mailbox">
 
 	<div ng-repeat="letter in letters" class="envelope-container">
-		<a ng-href="javascript:openLetter({{letter.id}}" class="envelope">
+		<a ng-href="javascript:openLetter({{letter.id}}"c class="envelope">
 			<div class="envelope-back">
 				<span class="seal">
 					<img ng-src="http://www.gravatar.com/avatar/{{letter.from}}?d=identicon" class="embossed seal-image" />
@@ -29,7 +29,10 @@
 	</div>
 
 </div><div id="viewArea">
+	<input id="composeTo" placeholder="To" type="text">
+	<input id="composeSubject" placeholder="Subject" type="text">
 	<textarea id="composeArea"></textarea>
+	<button onclick="sendMail()">Send</button>
 </div>
 
 </div>
