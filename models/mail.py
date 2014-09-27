@@ -29,7 +29,7 @@ class Mail:
 					"recipient":omail[3],
 					"subject":omail[4],
 				}
-			] for omail in mails
+			 for omail in mails ]
 
 		
 
