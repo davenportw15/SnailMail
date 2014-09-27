@@ -3,26 +3,41 @@ class Users:
   def __init__(self, db):
     self.db = db
 
-  def create_user(self, username, password, longitude, latitude):
+  def create_user(self, username, password, latitude, longitude):
     cursor = self.db.cursor()
     cursor.execute(
-      "insert into users (username, password, longitude, latitude) values (?, ?, ?, ?)",
+      "insert into users (username, password, latitude, longitude) values (?, ?, ?, ?)",
       (username,
       password,
-      longitude,
-      latitude)
+      latitude,
+      longitude)
     )
     self.db.commit()
 
   def get_user(self, id):
     cursor = self.db.cursor()
     cursor.execute(
-      "select username, latitude, longitude from users where id == ?",
+      "select username, latitude, longitude, id from users where id == ?",
       (id,)
     )
     data = cursor.fetchone()
     return {
       "username": data[0],
       "latitude": data[1],
-      "longitude": data[2]
+      "longitude": data[2],
+      "id": data[3]
+    }
+
+  def get_user_by_username(self, username):
+    cursor = self.db.cursor()
+    cursor.execute(
+      "select username, latitude, longitude, id from users where username == ?",
+      (username,)
+    )
+    data = cursor.fetchone()
+    return {
+      "username": data[0],
+      "latitude": data[1],
+      "longitude": data[2],
+      "id": data[3]
     }

@@ -13,8 +13,8 @@ def dist(lat1,lon1,lat2,lon2):
 #print dist(34,-118,42,-71)
 
 def time(dist):
-	if dist < 1400000:
-		return 2
+	#if dist < 1400000:
+	#	return 2
 	return int(round(dist/700000,0))
 #test code
 #print time(dist(34,-118,42,-71))

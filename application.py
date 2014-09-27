@@ -12,7 +12,7 @@ db = sqlite3.connect(os.path.abspath("db.sqlite"))
 
 # Models
 users = Users(db)
-mail = Mail(db)
+mail = Mail(db, users)
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
