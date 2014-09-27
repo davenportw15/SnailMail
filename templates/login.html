@@ -12,12 +12,18 @@
 
 <div class="popup-container">
 <div class="popup">
-<form action="post" method="/api/login">
+<% with messages = get_flashed_messages() %>
+  <% if messages %>
+   <% for message in messages %>
+    	<span class="error"> %% message %% </span>
+    <% endfor %>
+  <% endif %>
+<% endwith %>
+<form action="/login" method="post">
 	<input type="text" name="username" placeholder="Username" />
 	<input type="password" name="password" placeholder="Password" />
-	<input id="latin" name="lat" type="hidden" />
-	<input id="lonin" name="lon" type="hidden" />
 	<input type="submit" value="Log In" />
+	<span style="text-align:center">... or <a href="/signup">sign up</a>.</span>
 </form>
 </div>
 </div>

@@ -394,3 +394,14 @@ input {
 input[type="submit"] {
   font-family: 'Sancreek';
 }
+.error {
+  color:#555;
+    border-radius:3px;
+    font-family:Tahoma,Geneva,Arial,sans-serif;font-size:11px;
+    padding:10px 10px 10px 36px;
+    margin:10px;
+    font-weight:bold;
+    text-transform:uppercase;
+    background:#ffecec;
+    border:1px solid #f5aca6;
+}
