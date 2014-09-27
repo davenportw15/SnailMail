@@ -21,7 +21,7 @@ app = FlaskAngular(__name__)
 app.config['DEBUG'] = True
 
 # SQLite3 connection
-db = sqlite3.connect(os.path.abspath("db.sqlite"))
+db = sqlite3.connect(os.path.abspath("db.sqlite"), check_same_thread=False)
 
 # Models
 users = Users(db)
@@ -41,10 +41,12 @@ def signup():
     longitude = request.form.get("longitude")
     latitude = request.form.get("latitude")
     if username and password and longitude and latitude:
+      print("{} {} {} {}".format(username, password, latitude, longitude))
       users.create_user(username, password, latitude, longitude)
+      return "User {} created".format(username)
     else:
       flash("Complete all fields")
-      redirect(url_for("signup"))
+      return redirect(url_for("signup"))
 
 # API
 @app.route("/api/mail")
