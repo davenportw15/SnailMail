@@ -31,9 +31,20 @@ mail = Mail(db, users)
 def test():
   return "Test"
 
-@app.route("/signup")
+@app.route("/signup", methods=["GET", "POST"])
 def signup():
-  return render_template("signup.html")
+  if request.method == "GET":
+    return render_template("signup.html")
+  else:
+    username = request.form.get("username")
+    password = request.form.get("password")
+    longitude = request.form.get("longitude")
+    latitude = request.form.get("latitude")
+    if username and password and longitude and latitude:
+      users.create_user(username, password, latitude, longitude)
+    else:
+      flash("Complete all fields")
+      redirect(url_for("signup"))
 
 # API
 @app.route("/api/mail")
