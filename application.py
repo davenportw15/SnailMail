@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, session, request, redirect, url_for, render_template, flash
 import sqlite3
 import os
+from datetime import datetime
 
 from models.users import Users
 from models.mail import Mail
@@ -82,8 +83,12 @@ def api_mail():
 @app.route("/api/send", methods=["POST"])
 def api_send():
   sent_mail = request.json
-  if "content" in sent_mail and "date_sent" in sent_mail and "sender" in sent_mail and "recipient" in sent_mail and "subject" in sent_mail:
-    mail.create_mail(sent_mail["content"], sent_mail["date_sent"], sent_mail["sender"], sent_mail["recipient"], sent_mail["subject"])
+  print(request.json)
+  print(session["username"])
+  now = datetime.now()
+  formatted_now = str((now).year) + "-" + str((now).month) + "-" + str((now).day)
+  if "content" in sent_mail and "username" in session and "recipient" in sent_mail and "subject" in sent_mail:
+    mail.create_mail(sent_mail["content"], formatted_now, session["username"], sent_mail["recipient"], sent_mail["subject"])
     return jsonify(status=True)
   else:
     return jsonify(status=False)

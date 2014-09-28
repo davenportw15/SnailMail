@@ -324,13 +324,10 @@ background-size: 100% 1.2em;
 }
 
 #letter {
-  display: none;
+  position: relative;
   margin: auto;
-  z-index: 99;
   width: 70%;
-  height: 100%;
   box-shadow: 0px 0px 20px #000;
-  position: fixed;
   height: 100%;
   background-color: #f1e9d2;
 }
@@ -422,16 +419,25 @@ input[type="submit"] {
     background:#ffecec;
     border:1px solid #f5aca6;
 }
-#sendMail {
+#sendMailb {
+  height: 20px;
+  width: 70px;
   position: absolute;
   bottom: 10px;
   right: 10px;
 }
-#viewMessage {
-
+#letter-wrapper {
+  display: none;
+  margin: auto;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  position: fixed;
 }
 
 #close {
+  height: 20px;
+  width: 70px;
   position: absolute;
   top: 3px;
   right: 3px;

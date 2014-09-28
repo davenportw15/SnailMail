@@ -1,6 +1,6 @@
 <html>
 <head>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
 <link rel="stylesheet" type="text/css" href="%% url_for('static', filename='css/style.css') %%">
 <script type="text/javascript" src="%% url_for('static', filename='js/controllers.js') %%"></script>
 </head>
@@ -8,39 +8,43 @@
 
 <div id="header">SnailMail</div>
 
+<div id="letter-wrapper">
 <div id="letter">
 <button id="close" onclick="closeLetter()">Close</button>
 	<div id="letter-from"></div>
 	<div id="letter-date"></div>
 	<div id="letter-message"></div>
 </div>
+</div>
 
 <div id="content">
 
-<div class="mail-list" ng-controller="mailbox">
+<div ng-controller="mailbox">
+	<div class="mail-list">
 
-	<div ng-repeat="letter in letters" class="envelope-container">
-		<a ng-href="javascript:openLetter({{letter}}" class="envelope">
-			<div class="envelope-back">
-				<span class="seal">
-					<img ng-src="http://www.gravatar.com/avatar/{{letter.from}}?d=identicon" class="embossed seal-image" />
-				</span>
-			</div>
-			<div class="envelope-front">
-				<span class="stamp"></span>
-				<span class="letter-from">{{letter.sender}}</span>
-				<span class="letter-subject">{{letter.subject}}</span>
-			</div>
-		</a>
+		<div ng-repeat="letter in letters" class="envelope-container">
+			<a ng-click="openLetter(letter)" class="envelope">
+				<div class="envelope-back">
+					<span class="seal">
+						<img ng-src="http://www.gravatar.com/avatar/{{letter.from}}?d=identicon" class="embossed seal-image" />
+					</span>
+				</div>
+				<div class="envelope-front">
+					<span class="stamp"></span>
+					<span class="letter-from">{{letter.sender}}</span>
+					<span class="letter-subject">{{letter.subject}}</span>
+				</div>
+			</a>
+		</div>
+
+	</div><div id="viewArea">
+		<input id="composeTo" placeholder="To" type="text">
+		<input id="composeSubject" placeholder="Subject" type="text">
+		<textarea id="composeArea"></textarea>
+		<button id="sendMailb" ng-click="sendEmail()">Send</button>
 	</div>
 
-</div><div id="viewArea">
-	<input id="composeTo" placeholder="To" type="text">
-	<input id="composeSubject" placeholder="Subject" type="text">
-	<textarea id="composeArea"></textarea>
-	<button id="sendMail" onclick="sendMail()">Send</button>
-</div>
-
+	</div>
 </div>
 
 </body>
