@@ -65,4 +65,4 @@ class Mail:
 		def hasArrived(mail):
 			return not (datetime.now() < datetime.strptime(mail["deliver_date"], "%Y-%m-%d"))
 
-		return filter(hasArrived, all_mail)
+		return list(filter(hasArrived, all_mail))
