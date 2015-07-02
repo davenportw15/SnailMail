@@ -10,6 +10,12 @@ class Users:
     password_key = sp.get_hash()
     password_salt = sp.get_salt()
     cursor = self.db.cursor()
+
+    # if the username exists, throw exception
+    cursor.execute("select id from users where username = ?", (username,))
+    if cursor.fetchone() is not None:
+        raise Exception("User already exists")
+
     cursor.execute(
       "insert into users (username, password_key, password_salt, latitude, longitude) values (?, ?, ?, ?, ?)",
       (username,

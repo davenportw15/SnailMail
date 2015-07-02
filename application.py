@@ -42,12 +42,14 @@ def signup():
     password = request.form.get("password")
     longitude = request.form.get("longitude")
     latitude = request.form.get("latitude")
-    if username and password and longitude and latitude:
+    try:
+      if not (username and password and longitude and latitude):
+          raise Exception("Complete all fields")
       users.create_user(username, password, latitude, longitude)
       session["username"] = username
       return redirect(url_for("dashboard"))
-    else:
-      flash("Complete all fields")
+    except Exception as err:
+      flash(str(err))
       return redirect(url_for("signup"))
 
 @app.route("/login", methods=["GET", "POST"])
