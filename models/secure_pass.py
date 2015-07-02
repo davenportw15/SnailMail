@@ -4,11 +4,11 @@ from pbkdf2 import PBKDF2 # key-stretching algorithm
 from os import urandom # crypto-secure random number gen
 
 ITERATIONS = 5000
-SALT_LEN = 32
-KEY_LEN = 64
+SALT_LEN = 32 # 256-bit salt
+KEY_LEN = 64 # 512-bit key
 class Password:
     def __init__(self, password):
-        self.salt = urandom(SALT_LEN) # 256-bit salt
+        self.salt = urandom(SALT_LEN) 
         self.key = PBKDF2(
                 passphrase=password,
                 salt=self.salt,
