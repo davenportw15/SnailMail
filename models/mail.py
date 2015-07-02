@@ -1,7 +1,7 @@
 from datetime import datetime
 from datetime import timedelta
-from distance import time
-from distance import dist
+from models.distance import time
+from models.distance import dist
 
 class Mail:
 	
