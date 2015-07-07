@@ -13,7 +13,7 @@ mailbox.controller('mailbox', function ($scope, $http) {
     data = {};
     console.log("TEST");
     data.content = document.getElementById('composeArea').value;
-    data.recipient = document.getElementById('composeTo').value;
+    data.recipient_username = document.getElementById('composeTo').value;
     data.subject = document.getElementById('composeSubject').value;
     $http.post('/api/send', data).
           success(function(data) {

@@ -5,6 +5,8 @@ class Users:
   def __init__(self, db):
     self.db = db
 
+  # returns username
+  @staticmethod
   def create_user(self, username, password, latitude, longitude):
     sp = secure_pass.Password(password)
     password_key = sp.get_hash()
@@ -26,18 +28,32 @@ class Users:
     )
 
     self.db.commit()
+    cursor.execute("select id from users where username = ?",
+            (username,))
+    return cursor.fetchone()[0]
 
+
+  @staticmethod
   def user_exists(self, username, password):
     cursor = self.db.cursor()
+    # get the count of users with that username. If the
+    # count is greater than one, throw up. If it's zero,
+    # return false. Otherwise, procede.
+    cursor.execute("select count(id) num from users where username = ?",
+            (username,))
+    row = cursor.fetchone()
+    assert row['num'] < 2
+    if row['num'] < 1:
+        return False
+
+
     # get the salt, key for the username
     cursor.execute("select password_salt, password_key from users where username == ?",
             (username,))
     row = cursor.fetchone()
-    if row is None:
-        return False
 
-    salt = row[0]
-    key = row[1]
+    salt = row['password_salt']
+    key = row['password_key']
 
     return secure_pass.Password.check_pass(
             password,
@@ -46,6 +62,7 @@ class Users:
             )
 
 
+  @staticmethod
   def get_user(self, id):
     cursor = self.db.cursor()
     cursor.execute(
@@ -62,11 +79,14 @@ class Users:
 
   def get_user_by_username(self, username):
     cursor = self.db.cursor()
+    print("username to get is: ",username)
     cursor.execute(
       "select username, latitude, longitude, id from users where username == ?",
       (username,)
     )
     data = cursor.fetchone()
+    if data is None:
+        raise Exception("No user" + username)
     return {
       "username": data[0],
       "latitude": data[1],
