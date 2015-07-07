@@ -4,8 +4,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+import os
 
-engine = create_engine('sqlite:///db.sqlite',
+conn_string = os.path.join(os.path.dirname(__file__), 'db.sqlite')
+
+engine = create_engine('sqlite:///' + conn_string,
         convert_unicode=True)
 db_session = scoped_session(sessionmaker(
     autocommit=False,
