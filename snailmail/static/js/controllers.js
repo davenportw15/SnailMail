@@ -25,7 +25,7 @@ mailbox.controller('mailbox', function ($scope, $http) {
     };
 
   $scope.openLetter = function(letter_obj) {
-    document.getElementById('letter-from').innerText = letter_obj.sender;
+    document.getElementById('letter-from').innerText = letter_obj.sender_name;
     document.getElementById('letter-date').innerText = letter_obj.date_sent;
     document.getElementById('letter-message').innerText = letter_obj.content;
     document.getElementById('letter-wrapper').style.display = 'block';

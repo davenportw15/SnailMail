@@ -130,6 +130,7 @@ def api_send():
                     User.get_user_by_username(
                         sent_mail['recipient_username'],db_session).id
                     )
+            tosend.set_delay()
             db_session.add(tosend)
             db_session.commit()
             return jsonify(status=True)
