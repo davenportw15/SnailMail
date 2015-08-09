@@ -123,12 +123,17 @@ def api_send():
             "recipient_username" in sent_mail and\
             "subject" in sent_mail:
         try:
+            recipient = User.get_user_by_username(
+                    sent_mail['recipient_username'],db_session)
+            if recipient is None:
+                raise Exception('User ' + sent_mail['recipient_username']
+                        + ' not found!')
+            recipient_id = recipient.id
             tosend = Mail(sent_mail['subject'],
                     sent_mail['content'],
                     now,
                     (session['user'])['id'],
-                    User.get_user_by_username(
-                        sent_mail['recipient_username'],db_session).id
+                    recipient_id
                     )
             tosend.set_delay()
             db_session.add(tosend)
@@ -138,7 +143,7 @@ def api_send():
             flash(str(err))
             import traceback
             print(traceback.format_exc())
-            return jsonify(status=False)
+            return jsonify(status=False,errmsg=err.args[0])
     else:
         return jsonify(status=False)
 
