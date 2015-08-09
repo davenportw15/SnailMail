@@ -105,9 +105,14 @@ def dashboard():
 def api_mail():
   if "user" in session:
       print("session user: ", session.get("user"))
-      mails = db_session.query(Mail).join(User,User.id==Mail.recipient_id).all()
-      if mails is not None:
+      mails = db_session.query(Mail).all()
+      now = datetime.now()
+      mails = list(filter(lambda mail:mail.date_deliver<=now\
+              and session.get('user')['id']==mail.recipient_id,mails))
+      if mails is not None and len(mails)>0:
         tojson = [mail.serialize() for mail in mails]
+      else:  
+        tojson=[]
       return jsonify(mail=tojson)
   else:
     return jsonify(mail=[])
